@@ -1,0 +1,117 @@
+<?php
+/**
+  Module developed for the Open Source Content Management System Website Baker (http://websitebaker.org)
+  Copyright (C) 2008, Bianka Martinovic
+  Contact me: blackbird(at)webbird.de, http://www.webbird.de/
+
+  This module is free software. You can redistribute it and/or modify it 
+  under the terms of the GNU General Public License  - version 2 or later, 
+  as published by the Free Software Foundation: http://www.gnu.org/licenses/gpl.html.
+
+  This module is distributed in the hope that it will be useful, 
+  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+  GNU General Public License for more details.
+
+**/
+
+// array for all language dependen text outputs in the front- and backend
+// Note: stick to the naming convention: $MOD_MODULE_DIRECTORY
+$MOD_BOOKINGS = array(
+  	// variables for the backend file: modify_settings.php
+  	'ACTIONS'             => 'handlinger',
+  	'ADD_GROUPS'          => 'Tilf&oslash;j reservationer',
+  	'ADMIN_EMAIL'         => 'Admin email (blank hvis ingen email)',
+  	'ADMIN_GROUPS'        => 'Administrator rettigheder',
+  	'ALWAYSLINK'          => 'Always link days',
+    'BACK'                => '&laquo; tilbage', 
+    'BACK_TO_YEARVIEW'    => 'tilbage til &aring;rsoversigt',
+  	'BEGINDATE'           => 'Startdato',
+  	'BEGINTIME'           => 'Starttid',
+    'BOOKED'              => 'optaget',
+    'BOOKED_PARTIALLY'    => 'delvist optaget',
+    'BOOKINGS_TITLE'      => 'Reservationer',
+  	'BOOKINGSFOOTER'      => 'Bund',
+  	'BOOKINGSHEADER'      => 'Overligger',
+  	'BREAK'               => 'Linieskift efter',
+    'CURRENTMONTH'        => 'vis kun denne m&aring;ned',
+    'DATEFORMAT'          => 'Datoformat',
+    'DAY'                 => 'Dag',
+    'DAYS'                => 'Dag',
+    'DAYENDHOUR'          => 'Kalenderblad slutter kl. (12 <= x <= 24)',
+    'DAYLONG'             => 'Hele dagen',
+    'DAYSHEETHEADER'      => 'Overskrift',
+    'DAYSPAN'             => 'Span',
+    'DAYSTARTHOUR'        => 'Kalenderblad starter kl. (0 <= x <= 12)',
+    'DAYVIEW'             => 'Vist',
+    'DAYVIEWLIST'         => 'som liste',
+    'DAYVIEWSHEET'        => 'som kalenderblad',
+    'DEL_GROUPS'          => 'Slet reservationer',
+    'DEFAULTS'            => 'Standardindstillinger',
+    'DEFAULT_DATEFORMAT'  => '%d/%m/%y',
+    'DEFAULT_VIEW'        => 'Standardvisning',
+    'DEFAULT_VIEW_YEAR'   => 'Indev&aelig;rende &aring;r',
+    'DEFAULT_VIEW_QUART'  => 'Indev&aelig;rende kvartal',
+    'DEFAULT_VIEW_MONTH'  => 'Indev&aelig;rende m&aring;ned',
+    'DEFAULT_VIEW_WEEK'   => 'Indev&aelig;rende uge',
+    'DEFAULT_VIEW_DAY'    => 'Dags dato',
+  	'ENDDATE'             => 'Slutdato',
+  	'ENDTIME'             => 'Sluttid',
+  	'ERR_EXISTS'          => 'Findes allerede',
+    'ERR_DATES'           => 'Slutdato ligger f&oslash;r startdato!',
+    'ERR_DATES_OVERLAP'   => 'Datoen overlapper med en eksisterende reservation',
+    'ERR_INVALID_PARAM'   => 'Invalid Parameter',
+    'ERR_PERMISSION'      => 'Du har ikke tilladelse til dette!',
+  	'FREE'                => 'ledig',
+    'FROM'                => 'fra',
+    'FRONTEND_MOD_LINK'   => 'Administration',
+    'GROUP'               => 'Gruppering',
+    'GROUPCOLOR'          => 'color',
+    'GROUPMEMBERS'        => 'Reservationer',
+    'GROUPNAME'           => 'Gruppenavn',
+    'GROUPS'              => 'Grupper',
+    'HIDENAME'            => 'Skjul',
+    'ID'                  => 'ID',
+    'IN_PAST'             => 'past',
+    'INFO'                => 'Ved heldagsreservation, s&aelig;t tiden til 0:00!',
+    'INFO_PAST_NOT_SHOWN' => 'Past bookings are not shown!',
+    'LASTYEAR'            => 'Vis sidste &aring;r',
+  	'LAYOUT_DAYVIEW'      => 'Dagsoversigt',
+  	'LAYOUT_SETTINGS'			=> 'Layout-indstillinger',
+  	'LAYOUT_YEARVIEW'     => '&aring;rsoversigt',
+  	'MAILSUBJECT'         => 'Ny reservation',
+    'MAILMESSAGE'         => 'Du har en ny reservation ',
+  	'MOD_GROUPS'          => 'Ret reservationer',
+  	'MODIFY_HEADER'       => 'Ret reservation',
+  	'MONTHNAMES'          => array(1 => 'Januar','Februar','Marts','April','Maj','Juni','Juli','August','September','Oktober','November','December'),
+  	'MONTHS'              => 'm&aring;neder',
+  	'MONTH'               => 'm&aring;ned',
+    'NAME'                => 'Reserveret af / tekst',
+    'NEXTYEAR'            => 'Vis n&aelig;ste &aring;r',
+    'NEXTYEARS'           => 'Show [x] years in the future',
+    'NO_BOOKINGS'         => 'Ingen reservationer',
+    'ONE_MONTH_BACK'      => '&laquo; one month back',
+    'ONE_MORE_MONTH'      => 'one month ahead &raquo;',
+    'OWNER'               => 'Ejer',
+    'PERMISSION_GROUP'    => 'Gruppetilladelser',
+    'PERMISSION_OWNER'    => 'Ejertilladelser',
+    'PERMISSION_SETTINGS' => 'Tilladelser',
+    'PREVYEARS'           => 'Anzahl Vorjahre zeigen',
+    'STATE'               => 'State',
+    'STATE_BOOKED'        => 'booked',
+    'STATE_RESERVED'      => 'reserved',
+    'SHORTDAYNAMES'       => array('Man','Tir','Ons','Tor','Fre','L&oslash;r','S&oslash;n'),
+    'SHOWNAME'            => 'Vis',
+    'SHOWPAST'            => 'Show bookings prior today',
+    'STRFTIMEHINT'        => '<a href="http://www.php.net/strftime" target="_blank">strftime()</a> format i stil med "%d/%m/%y"; standard er fastlagt i sprogmodulet',
+  	'STYLESHEET'          => 'Stylesheet',
+    'TIMEOFFSET'          => 'Tidsenhed (i minutter)',
+  	'TODAY'               => 'dags dato',
+    'UNTIL'               => 'indtil',
+    'OWNER_CAN_ALL'       => 'Ejeren kan &aelig;ndre/slette reservationer',
+    'QUART'               => 'Kvartal',
+    'WEEK'                => 'Uge',
+    'YEAR'                => '&Aring;r',
+);
+
+?>

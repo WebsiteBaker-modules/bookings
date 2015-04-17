@@ -1,0 +1,117 @@
+<?php
+/**
+  Module developed for the Open Source Content Management System Website Baker (http://websitebaker.org)
+  Copyright (C) 2008, Bianka Martinovic
+  Contact me: blackbird(at)webbird.de, http://www.webbird.de/
+
+  This module is free software. You can redistribute it and/or modify it 
+  under the terms of the GNU General Public License  - version 2 or later, 
+  as published by the Free Software Foundation: http://www.gnu.org/licenses/gpl.html.
+
+  This module is distributed in the hope that it will be useful, 
+  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+  GNU General Public License for more details.
+
+**/
+
+// array for all language dependen text outputs in the front- and backend
+// Note: stick to the naming convention: $MOD_MODULE_DIRECTORY
+$MOD_BOOKINGS = array(
+  	// variables for the backend file: modify_settings.php
+  	'ACTIONS'             => 'akcie',
+  	'ADD_GROUPS'          => 'Pridat nové rezervácie',
+  	'ADMIN_EMAIL'         => 'Admin email (leave blank for no email)',
+  	'ADMIN_GROUPS'        => 'Admin groups',
+  	'ALWAYSLINK'          => 'Always link days',
+    'BACK'                => '&laquo; spät', 
+    'BACK_TO_YEARVIEW'    => 'spät na prehlad roku',
+  	'BEGINDATE'           => 'Dátum zaciatku',
+  	'BEGINTIME'           => 'Cas zaciatku',
+    'BOOKED'              => 'obsadené',
+    'BOOKED_PARTIALLY'    => 'ciastocne obsadené',
+    'BOOKINGS_TITLE'      => 'Rezervácie',
+  	'BOOKINGSFOOTER'      => 'Rezervácie päta',
+  	'BOOKINGSHEADER'      => 'Rezervácie hlavicka',
+  	'BREAK'               => 'Linebreak after',
+    'CURRENTMONTH'        => 'ukáž len tento mesiac',
+    'DATEFORMAT'          => 'Formát dátumu',
+    'DAY'                 => 'Den',
+    'DAYS'                => 'Den',
+    'DAYENDHOUR'          => 'Koniec listu s hodinou (12 <= x <= 24)',
+    'DAYLONG'             => 'celodenný',
+    'DAYSHEETHEADER'      => 'Titulok',
+    'DAYSPAN'             => 'Span',
+    'DAYSTARTHOUR'        => 'Štart listu s hodinou (0 <= x <= 12)',
+    'DAYVIEW'             => 'Ukáž',
+    'DAYVIEWLIST'         => 'ako zoznam',
+    'DAYVIEWSHEET'        => 'ako list',
+    'DEL_GROUPS'          => 'Zmazanie rezervácie',
+    'DEFAULTS'            => 'Predvolené',
+    'DEFAULT_DATEFORMAT'  => '%m/%d/%y',
+    'DEFAULT_VIEW'        => 'Predvolený pohlad',
+    'DEFAULT_VIEW_YEAR'   => 'aktuálny rok',
+    'DEFAULT_VIEW_QUART'  => 'aktuálny štvrtrok',
+    'DEFAULT_VIEW_MONTH'  => 'aktuálny mesiac',
+    'DEFAULT_VIEW_WEEK'   => 'aktuálny týžden roku',
+    'DEFAULT_VIEW_DAY'    => 'dnes',
+  	'ENDDATE'             => 'Dátum konca',
+  	'ENDTIME'             => 'Cas konca',
+  	'ERR_EXISTS'          => 'Táto položka už existuje',
+    'ERR_DATES'           => 'Dátum konca je pred dátumov zaciatku!',
+    'ERR_DATES_OVERLAP'   => 'Dátum sa prekrýva s existujúcim zadaním!',
+    'ERR_INVALID_PARAM'   => 'Invalid Parameter',
+    'ERR_PERMISSION'      => 'Nemáte oprávnenie pre túto akciu!',
+  	'FREE'                => 'volné',
+    'FROM'                => 'od',
+    'FRONTEND_MOD_LINK'   => 'modifikuj rezerváciu',
+    'GROUP'               => 'skupiny',
+    'GROUPCOLOR'          => 'color',
+    'GROUPMEMBERS'        => 'záznamy',
+    'GROUPNAME'           => 'názov skupiny',
+    'GROUPS'              => 'Skupiny',
+    'HIDENAME'            => 'skryt',
+    'ID'                  => 'ID',
+    'IN_PAST'             => 'posledný',
+    'INFO'                => 'Precelý den nechajte nastavenie casu na 0:00!',
+    'INFO_PAST_NOT_SHOWN' => 'Posledná rezervácia sa neukáže!',
+    'LASTYEAR'            => 'ukáž posledný rok',
+  	'LAYOUT_DAYVIEW'      => 'Denný pohlad',
+  	'LAYOUT_SETTINGS'			=> 'Layout settings',
+  	'LAYOUT_YEARVIEW'     => 'Rocný pohlad',
+  	'MAILSUBJECT'         => 'Nová rezervácia',
+    'MAILMESSAGE'         => 'máte novú rezerváciu ',
+  	'MOD_GROUPS'          => 'Zmente rezerváciu',
+  	'MODIFY_HEADER'       => 'Zmente rezerváciu',
+  	'MONTHNAMES'          => array(1 => 'Január','Február','Marec','Apríl','Máj','Jún','Júl','August','September','Október','November','December'),
+  	'MONTH'               => 'Mesiac',
+  	'MONTHS'              => 'mesiace',
+    'NAME'                => 'Renter / Text',
+    'NEXTYEAR'            => 'ukáž další rok',
+    'NEXTYEARS'           => 'Ukáž [x] budúcich rokov',
+    'NO_BOOKINGS'         => 'žiadne rezervácie',
+    'ONE_MONTH_BACK'      => '&laquo; jeden mesiac spät',
+    'ONE_MORE_MONTH'      => 'jeden mesiac vpred &raquo;',
+    'OWNER'               => 'vlastník',
+    'PERMISSION_GROUP'    => 'oprávnenia skupiny',
+    'PERMISSION_OWNER'    => 'oprávnenia vlastníka',
+    'PERMISSION_SETTINGS' => 'Oprávnenia',
+    'PREVYEARS'           => 'Ukáž [x] predchadzajúcich rokov',
+    'SHORTDAYNAMES'       => array('Pon','Ut','Str','Štv','Pia','Sob','Ned'),
+    'SHOWNAME'            => 'Ukáž',
+    'SHOWPAST'            => 'Ukáž predchádzjúce rezervácie dnes',
+    'STATE'               => 'Stav',
+    'STATE_BOOKED'        => 'Obsadené',
+    'STATE_RESERVED'      => 'rezervované',
+    'STRFTIMEHINT'        => '<a href="http://www.php.net/strftime" target="_blank">strftime()</a> format, i. e. something like "%m/%d/%y"; default is set in language module',
+  	'STYLESHEET'          => 'Stylesheet',
+    'TIMEOFFSET'          => 'Time offset (minutes)',
+  	'TODAY'               => 'dnes',
+    'UNTIL'               => 'do',
+    'OWNER_CAN_ALL'       => 'Vlastník môže modifikovat/mazat záznam',
+    'QUART'               => 'Štvrtrok',
+    'WEEK'                => 'Týžden',
+    'YEAR'                => 'Rok',
+);
+
+?>

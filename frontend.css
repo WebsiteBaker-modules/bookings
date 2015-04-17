@@ -1,0 +1,286 @@
+/*
+  CSS definition for Website Baker module: Bookings
+  Copyright (C) 2008, Bianka Martinovic
+  Contact me: blackbird(at)webbird.de, http://www.webbird.de/
+
+  This CSS file is free software. You can redistribute it and/or modify it
+  under the terms of the GNU General Public License  - version 2 or later,
+  as published by the Free Software Foundation: http://www.gnu.org/licenses/gpl.html.
+
+  This CSS file is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+*/
+
+#mod_bookings {
+    font-size       : smaller;
+}
+
+#mod_bookings td.right {
+    text-align      : right;
+}
+
+#bookings_modlink img {
+    border          : 0;
+    float           : right;
+}
+#mod_bookings .bookings_footer {
+    text-align      : center;
+    font-size       : smaller;
+    border-top      : 1px solid gray;
+}
+
+/*
+    year view
+*/
+#mod_bookings .bookings_yearnav {
+    margin          : auto;
+}
+#mod_bookings .bookings_left {
+    float           : left;
+}
+#mod_bookings .bookings_right {
+    float           : right;
+}
+#mod_bookings .bookings_sheet {
+    border          : 1px solid #ccc;
+    /*float           : left;*/
+    display: inline-table;
+    margin-right    : 5px;
+    margin-bottom   : 5px;
+}
+#mod_bookings .bookings_clear {
+    /*clear           : left;*/
+}
+#mod_bookings .bookings_blank {
+
+}
+#mod_bookings .bookings_month {
+    font-weight     : bolder;
+    text-align      : center;
+    background      : #759d00;
+}
+#mod_bookings .bookings_month a[href] {
+    color           : #ffffcc;
+}
+#mod_bookings .bookings_today {
+    border          : 1px solid #888;
+    background-color: #B1CE5D;
+}
+#mod_bookings .bookings_past {
+    background-color: #eee;
+    color           : #ccc;
+}
+#mod_bookings .bookings_sunday {
+    color           : #f00;
+}
+#mod_bookings .bookings_weekday {
+    color           : #000;
+}
+#mod_bookings .bookings_weeknumber a[href] {
+    color		    : #ccc;
+    text-decoration : none;
+}
+#mod_bookings .bookings_reserved {
+    background      : #ff0;
+}
+#mod_bookings .bookings_booked {
+    background      : #F02000;
+}
+#mod_bookings .bookings_partially {
+    background      : #f90;
+}
+#mod_bookings .bookings_booked a[href]{
+    border-bottom   : 1px solid #ccc;
+}
+#mod_bookings .bookings_daynames {
+
+}
+#mod_bookings .bookings_bygroup {
+    width           : 80%;
+}
+#mod_bookings a.bookings_tooltip {
+    position        : relative;
+    text-decoration : none;
+    color           : #000;
+    border-bottom   : 1px dotted #ccc;
+}
+#mod_bookings a.bookings_tooltip span {
+    display         : none;
+}
+#mod_bookings a.bookings_tooltip:hover span {
+    position        : absolute;
+    top             : 5px;
+    left            : 30px;
+    width           : 150px;
+    padding         : 5px;
+    display         : block;
+    background      : #eee;
+    border          : 1px solid #000;
+    z-index         : 10;
+}
+/*
+    week view
+*/
+#mod_bookings .bookings_week {
+    width           : 90%;
+    margin          : auto;
+    text-align      : center;
+}
+#mod_bookings .bookings_week_header {
+    background      : #759d00;
+}
+#mod_bookings .bookings_week_header a[href] {
+    color           : #ffffcc;
+}
+#mod_bookings td.bookings_tooltip {
+    position        : relative;
+    text-decoration : none;
+    color           : #000;
+    border-bottom   : 1px dotted #ccc;
+}
+#mod_bookings td.bookings_tooltip span {
+    display         : none;
+}
+#mod_bookings td.bookings_tooltip:hover span {
+    position        : absolute;
+    top             : 5px;
+    left            : 30px;
+    width           : 150px;
+    padding         : 5px;
+    display         : block;
+    background      : #eee;
+    border          : 1px solid #000;
+    z-index         : 10;
+}
+/*
+    day view
+*/
+#mod_bookings .bookings_daysheet {
+    width           : 80%;
+}
+#mod_bookings .bookings_daysheet_header {
+    background      : #759d00;
+    font-size       : 1.3em;
+    font-weight     : bold;
+	text-align      : center;
+}
+#mod_bookings .bookings_daysheet_header_range {
+
+}
+#mod_bookings .bookings_daysheet_hour {
+    border-bottom   : 1px solid #ccc;
+    width           : 20%;
+    text-align      : right;
+}
+#mod_bookings .bookings_daysheet_booked {
+    background      : #F02000;
+}
+#mod_bookings .bookings_daysheet_reserved {
+    background      : #ff0;
+}
+
+
+/* Backend */
+
+#mod_bookings .mod_bookings_table {
+    background-color : #ebf7fc;
+    width            : 100%;
+    margin           : auto;
+    padding          : 0;
+    border-collapse  : collapse;
+    border-bottom    : 1px solid gray;
+}
+
+#mod_bookings td {
+    text-align       : left;
+}
+
+/*
+  forms
+*/
+#mod_bookings input[type=text],
+#mod_bookings input[type=submit],
+#mod_bookings input[type=button],
+#mod_bookings select {
+    color            : #000;
+    background-color : #F0F0F0;
+    border           : 1px solid gray;
+    padding          : 2px;
+    margin           : 0;
+    width            : 110px;
+}
+
+#mod_bookings .small {
+    width            : 60px;
+}
+
+#mod_bookings textarea {
+    color            : #000;
+    background-color : #f0f0f0;
+    border           : 1px solid gray;
+    padding          : 2px;
+    margin           : 0;
+}
+
+#mod_bookings textarea:focus,
+#mod_bookings input:focus,
+#mod_bookings select:focus {
+    background-color : #fff;
+}
+
+#mod_bookings td.mod_bookings_left {
+    vertical-align   : top;
+    font-weight      : bolder;
+}
+
+#mod_bookings .row_a {
+    font-size        : 1.2em;
+    text-align       : center;
+    padding          : 5px;
+    border-top       : 1px solid gray;
+    border-bottom    : 1px solid gray;
+}
+
+#mod_bookings .row_b {
+    padding          : 5px;
+    border-top       : 1px solid gray;
+}
+
+#mod_bookings .mod_bookings_button {
+    display          : block;
+    color            : #000;
+    background-color : #F0F0F0;
+    border           : 1px solid gray;
+    padding          : 2px;
+    margin           : 0;
+    width            : 110px;
+}
+#mod_bookings a[href] img {
+    border           : 0;
+}
+
+#mod_bookings .mod_bookings_ok,
+#mod_bookings .mod_bookings_fail {
+    width            : 100%;
+    line-height      : 25px;
+    font-weight      : bold;
+    padding          : 5px;
+    text-align       : center;
+}
+#mod_bookings .mod_bookings_ok {
+    color            : #759d00;
+    border           : 1px solid #759d00;
+}
+#mod_bookings .mod_bookings_fail {
+    color            : #f00;
+    border           : 1px solid #f00;
+}
+#mod_bookings #colorsample {
+    width: 10px !important;
+    max-width: 10px !important;
+    min-width: 10px !important;
+    height: 10px;
+    border: 0;
+}

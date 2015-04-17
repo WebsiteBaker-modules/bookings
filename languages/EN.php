@@ -1,0 +1,117 @@
+<?php
+/**
+  Module developed for the Open Source Content Management System Website Baker (http://websitebaker.org)
+  Copyright (C) 2008, Bianka Martinovic
+  Contact me: blackbird(at)webbird.de, http://www.webbird.de/
+
+  This module is free software. You can redistribute it and/or modify it 
+  under the terms of the GNU General Public License  - version 2 or later, 
+  as published by the Free Software Foundation: http://www.gnu.org/licenses/gpl.html.
+
+  This module is distributed in the hope that it will be useful, 
+  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+  GNU General Public License for more details.
+
+**/
+
+// array for all language dependen text outputs in the front- and backend
+// Note: stick to the naming convention: $MOD_MODULE_DIRECTORY
+$MOD_BOOKINGS = array(
+  	// variables for the backend file: modify_settings.php
+  	'ACTIONS'             => 'actions',
+  	'ADD_GROUPS'          => 'Add new bookings',
+  	'ADMIN_EMAIL'         => 'Admin email (leave blank for no email)',
+  	'ADMIN_GROUPS'        => 'Admin groups',
+  	'ALWAYSLINK'          => 'Always link days',
+    'BACK'                => '&laquo; back', 
+    'BACK_TO_YEARVIEW'    => 'back to year view',
+  	'BEGINDATE'           => 'Begin date',
+  	'BEGINTIME'           => 'Begin time',
+    'BOOKED'              => 'occupied',
+    'BOOKED_PARTIALLY'    => 'partially occupied',
+    'BOOKINGS_TITLE'      => 'Bookings',
+  	'BOOKINGSFOOTER'      => 'Bookings footer',
+  	'BOOKINGSHEADER'      => 'Bookings header',
+  	'BREAK'               => 'Linebreak after',
+    'CURRENTMONTH'        => 'show this month only',
+    'DATEFORMAT'          => 'Date format',
+    'DAY'                 => 'Day',
+    'DAYS'                => 'Days',
+    'DAYENDHOUR'          => 'End sheet with hour (12 <= x <= 24)',
+    'DAYLONG'             => 'Whole day',
+    'DAYSHEETHEADER'      => 'Heading',
+    'DAYSPAN'             => 'Span',
+    'DAYSTARTHOUR'        => 'Start sheet with hour (0 <= x <= 12)',
+    'DAYVIEW'             => 'Show',
+    'DAYVIEWLIST'         => 'as list',
+    'DAYVIEWSHEET'        => 'as sheet',
+    'DEL_GROUPS'          => 'Delete bookings',
+    'DEFAULTS'            => 'Defaults',
+    'DEFAULT_DATEFORMAT'  => '%m/%d/%y',
+    'DEFAULT_VIEW'        => 'Default view',
+    'DEFAULT_VIEW_YEAR'   => 'current year',
+    'DEFAULT_VIEW_QUART'  => 'current quarter',
+    'DEFAULT_VIEW_MONTH'  => 'current month',
+    'DEFAULT_VIEW_WEEK'   => 'current week of year',
+    'DEFAULT_VIEW_DAY'    => 'today',
+  	'ENDDATE'             => 'End date',
+  	'ENDTIME'             => 'End time',
+  	'ERR_EXISTS'          => 'This item already exists',
+    'ERR_DATES'           => 'End date is before Begin date!',
+    'ERR_DATES_OVERLAP'   => 'The date overlaps an existing entry!',
+    'ERR_INVALID_PARAM'   => 'Invalid Parameter',
+    'ERR_PERMISSION'      => 'You don\'t have permission for this action!',
+  	'FREE'                => 'free',
+    'FROM'                => 'from',
+    'FRONTEND_MOD_LINK'   => 'modify bookings',
+    'GROUP'               => 'group',
+    'GROUPCOLOR'          => 'color',
+    'GROUPMEMBERS'        => 'entries',
+    'GROUPNAME'           => 'group name',
+    'GROUPS'              => 'Groups',
+    'HIDENAME'            => 'hide',
+    'ID'                  => 'ID',
+    'IN_PAST'             => 'past',
+    'INFO'                => 'For whole day, leave the time settings to 0:00!',
+    'INFO_PAST_NOT_SHOWN' => 'Past bookings are not shown!',
+    'LASTYEAR'            => 'show last year',
+  	'LAYOUT_DAYVIEW'      => 'Day view',
+  	'LAYOUT_SETTINGS'			=> 'Layout settings',
+  	'LAYOUT_YEARVIEW'     => 'Year view',
+  	'MAILSUBJECT'         => 'New booking',
+    'MAILMESSAGE'         => 'You have a new booking ',
+  	'MOD_GROUPS'          => 'Modify bookings',
+  	'MODIFY_HEADER'       => 'Modify booking',
+  	'MONTHNAMES'          => array(1 => 'January','February','March','April','May','June','July','August','September','October','November','December'),
+  	'MONTH'               => 'Month',
+  	'MONTHS'              => 'months',
+    'NAME'                => 'Renter / Text',
+    'NEXTYEAR'            => 'show next year',
+    'NEXTYEARS'           => 'Show [x] years in the future',
+    'NO_BOOKINGS'         => 'no bookings',
+    'ONE_MONTH_BACK'      => '&laquo; one month back',
+    'ONE_MORE_MONTH'      => 'one month ahead &raquo;',
+    'OWNER'               => 'owner',
+    'PERMISSION_GROUP'    => 'Group permissions',
+    'PERMISSION_OWNER'    => 'Owner permissions',
+    'PERMISSION_SETTINGS' => 'Permissions',
+    'PREVYEARS'           => 'Show [x] previous years',
+    'SHORTDAYNAMES'       => array('Mon','Tue','Wed','Thu','Fri','Sat','Sun'),
+    'SHOWNAME'            => 'show',
+    'SHOWPAST'            => 'Show bookings prior today',
+    'STATE'               => 'State',
+    'STATE_BOOKED'        => 'occupied',
+    'STATE_RESERVED'      => 'reserved',
+    'STRFTIMEHINT'        => '<a href="http://www.php.net/strftime" target="_blank">strftime()</a> format, i. e. something like "%m/%d/%y"; default is set in language module',
+  	'STYLESHEET'          => 'Stylesheet',
+    'TIMEOFFSET'          => 'Time offset (minutes)',
+  	'TODAY'               => 'today',
+    'UNTIL'               => 'until',
+    'OWNER_CAN_ALL'       => 'Owner can modify/delete bookings',
+    'QUART'               => 'Quarter',
+    'WEEK'                => 'Week',
+    'YEAR'                => 'Year',
+);
+
+?>

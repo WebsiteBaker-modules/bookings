@@ -1,0 +1,117 @@
+<?php
+/**
+  Module developed for the Open Source Content Management System Website Baker (http://websitebaker.org)
+  Copyright (C) 2008, Bianka Martinovic
+  Contact me: blackbird(at)webbird.de, http://www.webbird.de/
+
+  This module is free software. You can redistribute it and/or modify it 
+  under the terms of the GNU General Public License  - version 2 or later, 
+  as published by the Free Software Foundation: http://www.gnu.org/licenses/gpl.html.
+
+  This module is distributed in the hope that it will be useful, 
+  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+  GNU General Public License for more details.
+
+**/
+
+// array for all language dependen text outputs in the front- and backend
+// Note: stick to the naming convention: $MOD_MODULE_DIRECTORY
+$MOD_BOOKINGS = array(
+  	// variables for the backend file: modify_settings.php
+  	'ACTIONS'             => 'hendelse',
+  	'ADD_GROUPS'          => 'Legg til ny reservasjoner',
+  	'ADMIN_EMAIL'         => 'Epost til ansvarlig (For ingen epost, la feltet st&aring; tomt)',
+  	'ADMIN_GROUPS'        => 'Administratorgrupper',
+  	'ALWAYSLINK'          => 'Always link days',
+    'BACK'                => '&laquo; Tilbake', 
+    'BACK_TO_YEARVIEW'    => 'Tilbake til visning av &aring;r',
+  	'BEGINDATE'           => 'Startdato',
+  	'BEGINTIME'           => 'Starttidspunkt',
+    'BOOKED'              => 'Utleid',
+    'BOOKED_PARTIALLY'    => 'Delvis utleid',
+    'BOOKINGS_TITLE'      => 'reservasjoner',
+  	'BOOKINGSFOOTER'      => 'Bunntekst for reservasjoner',
+  	'BOOKINGSHEADER'      => 'Topptekst for reservasjoner',
+  	'BREAK'               => 'Skillelinje etter ',
+    'CURRENTMONTH'        => 'Vis kun denne m&aring;neden',
+    'DATEFORMAT'          => 'Tidsformat',
+    'DAY'                 => 'Dag',
+    'DAYS'                => 'Dage',
+    'DAYENDHOUR'          => 'Start oversikt med timer (12 <= x <= 24)',
+    'DAYLONG'             => 'hele dagen',
+    'DAYSHEETHEADER'      => 'Overskrift',
+    'DAYSPAN'             => 'Span',
+    'DAYSTARTHOUR'        => 'Start oversikt med timer (0 <= x <= 12)',
+    'DAYVIEW'             => 'Vis',
+    'DAYVIEWLIST'         => 'Som liste',
+    'DAYVIEWSHEET'        => 'som oversikt',
+    'DEL_GROUPS'          => 'Slett reservasjoner',
+    'DEFAULTS'            => 'Tilbakestill',
+    'DEFAULT_DATEFORMAT'  => '%d/%m/%y',
+    'DEFAULT_VIEW'        => 'Standard visning',
+    'DEFAULT_VIEW_YEAR'   => 'gjeldende &aring;r',
+    'DEFAULT_VIEW_QUART'  => 'gjeldende kvartal',
+    'DEFAULT_VIEW_MONTH'  => 'gjeldende m&aring;ned',
+    'DEFAULT_VIEW_WEEK'   => 'gjeldende uke i &aring;ret',
+    'DEFAULT_VIEW_DAY'    => 'i dag',
+  	'ENDDATE'             => 'Sluttdato',
+  	'ENDTIME'             => 'Slutttidspunkt',
+  	'ERR_EXISTS'          => 'Denne reservasjonen eksisterer allerede',
+    'ERR_DATES'           => 'Sluttdato er f&oslash;r startdato!',
+    'ERR_DATES_OVERLAP'   => 'Datoen overlapper en eksisterende reservasjon!',
+    'ERR_INVALID_PARAM'   => 'Du har lagt inn informasjon som ikke er gyldig',
+    'ERR_PERMISSION'      => 'Du har ikke tillatelse til &aring; gj&oslash;re denne handlingen!',
+  	'FREE'                => 'gratis',
+    'FROM'                => 'fra',
+    'FRONTEND_MOD_LINK'   => 'Endre reservasjoner',
+    'GROUP'               => 'gruppe',
+    'GROUPCOLOR'          => 'color',
+    'GROUPMEMBERS'        => 'gruppemedlemmer',
+    'GROUPNAME'           => 'gruppenavn',
+    'GROUPS'              => 'Grupper',
+    'HIDENAME'            => 'skjul',
+    'ID'                  => 'ID',
+    'IN_PAST'             => 'fortid',
+    'INFO'                => 'For hele dagen, sett tidspunktet til 0:00!',
+    'INFO_PAST_NOT_SHOWN' => 'Reservasjoner som er utl&oslash;pt vises ikke!',
+    'LASTYEAR'            => 'vis tidligere &aring;r',
+  	'LAYOUT_DAYVIEW'      => 'Vis dag',
+  	'LAYOUT_SETTINGS'			=> 'Innstillinger for utforming',
+  	'LAYOUT_YEARVIEW'     => 'Vis &aring;r',
+  	'MAILSUBJECT'         => 'Ny reservasjon',
+    'MAILMESSAGE'         => 'Du har en ny reservasjon ',
+  	'MOD_GROUPS'          => 'Endre reservasjoner',
+  	'MODIFY_HEADER'       => 'Endre reservasjon',
+  	'MONTHNAMES'          => array(1 => 'Januar','Februar','Mars','April','Mai','Juni','Juli','August','September','Oktober','November','Desember'),
+  	'MONTH'               => 'M&aring;ned',
+  	'MONTHS'              => 'm&aring;neder',
+    'NAME'                => 'Leietaker / notatfelt',
+    'NEXTYEAR'            => 'vis neste &aring;r',
+    'NEXTYEARS'           => 'Vis [x] &aring;r fremover',
+    'NO_BOOKINGS'         => 'Ledig',
+    'ONE_MONTH_BACK'      => '&laquo; one month back',
+    'ONE_MORE_MONTH'      => 'one month ahead &raquo;',
+    'OWNER'               => 'eier',
+    'PERMISSION_GROUP'    => 'Tillatelser for gruppe',
+    'PERMISSION_OWNER'    => 'Tillatelser for eier',
+    'PERMISSION_SETTINGS' => 'Tilatelser',
+    'PREVYEARS'           => 'vis [x] tidligere &aring;r',
+    'SHORTDAYNAMES'       => array('Man','Tirs','Ons','Tors','Fre','L&oslash;r','S&oslash;n'),
+    'SHOWNAME'            => 'vis',
+    'SHOWPAST'            => 'Vis reservasjoner som har vært',
+    'STATE'               => 'State',
+    'STATE_BOOKED'        => 'occupied',
+    'STATE_RESERVED'      => 'reserved',
+    'STRFTIMEHINT'        => '<a href="http://www.php.net/strftime" target="_blank">strftime()</a> format, i. e. something like "%m/%d/%y"; default is set in language module',
+  	'STYLESHEET'          => 'Stilsett',
+    'TIMEOFFSET'          => 'Tidsangivelse (minutes)',
+  	'TODAY'               => 'i dag',
+    'UNTIL'               => 'fram til',
+    'OWNER_CAN_ALL'       => 'Eier kan endre eller slette reservasjon',
+    'QUART'               => 'Kvartal',
+    'WEEK'                => 'Uke',
+    'YEAR'                => '&Aring;r',
+);
+
+?>

@@ -1,0 +1,107 @@
+/*
+/*
+  CSS definition for Website Baker module: Bookings
+  Copyright (C) 2008, Bianka Martinovic
+  Contact me: blackbird(at)webbird.de, http://www.webbird.de/
+
+  This CSS file is free software. You can redistribute it and/or modify it 
+  under the terms of the GNU General Public License  - version 2 or later, 
+  as published by the Free Software Foundation: http://www.gnu.org/licenses/gpl.html.
+
+  This CSS file is distributed in the hope that it will be useful, 
+  but WITHOUT ANY WARRANTY; without even the implied warranty of 
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+  GNU General Public License for more details.
+*/
+@import url(frontend.css); 
+#mod_bookings .mod_bookings_table {
+    background-color : #fff;
+    width            : 100%;
+    margin           : auto;
+    padding          : 0;
+    border-collapse  : collapse;
+    border-bottom    : 1px solid gray;
+}
+
+#mod_bookings td {
+    text-align       : left;
+}
+
+/* 
+  The definitions below provide the style for the edit CSS button 
+  You need to replace the string helloworld below with the module directory of your module to get it work
+*/
+#mod_bookings input[type=text], 
+#mod_bookings input[type=submit], 
+#mod_bookings input[type=button],
+input.mod_bookings_v2_edit_css,
+#mod_bookings select {
+    color            : #000;
+    background-color : #F0F0F0;
+    border           : 1px solid gray;
+    padding          : 2px;
+    margin           : 0;
+    min-width        : 50px;
+    width            : 110px;
+}
+
+#mod_bookings .small {
+    width            : 60px;
+}
+
+#mod_bookings textarea {
+    color            : #000;
+    background-color : #F0F0F0;
+    border           : 1px solid gray;
+    padding          : 2px;
+    margin           : 0;
+}
+
+#mod_bookings textarea:focus, 
+#mod_bookings input:focus,
+#mod_bookings select:focus {
+    background-color : #fff;
+}
+
+td.mod_bookings_left {
+    width            : 30%;
+    vertical-align   : top;
+    font-weight      : bolder;
+}
+
+td.mod_bookings_right {
+    width            : 50%;
+}
+
+.row_a {
+    font-size        : 1.2em;
+    text-align       : center;
+    padding          : 5px;
+    border-top       : 1px solid gray;
+    border-bottom    : 1px solid gray;
+}
+
+.row_b {
+    padding          : 5px;
+    border-top       : 1px solid gray;
+}
+
+#mod_bookings .mod_bookings_ok,
+#mod_bookings .mod_bookings_fail {
+    width            : 100%;
+    line-height      : 25px;
+    font-weight      : bold;
+    padding          : 5px;
+    text-align       : center;
+}
+#mod_bookings .mod_bookings_ok {
+    color            : #759d00;
+    border           : 1px solid #759d00;
+}
+#mod_bookings .mod_bookings_fail {
+    color            : #f00;
+    border           : 1px solid #f00;
+}
+#mod_bookings a[href] img {
+    border           : 0;
+}
