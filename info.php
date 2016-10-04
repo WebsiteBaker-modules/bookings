@@ -1,7 +1,7 @@
 <?php
 /**
   Module developed for the Open Source Content Management System Website Baker (http://websitebaker.org)
-  Copyright (C) 2008, Bianka Martinovic
+  Copyright (C) 2008 - 2015, Bianka Martinovic
   Contact me: blackbird(at)webbird.de, http://www.webbird.de/
 
   LICENCE TERMS / LIZENZBESTIMMUNGEN:
@@ -22,7 +22,7 @@
 $module_directory 	= 'bookings_v2';
 $module_name 		= 'Bookings V2.x';
 $module_function 	= 'page';
-$module_version 	= '2.33';
+$module_version 	= '2.37';
 $module_platform 	= '2.7.x';
 
 $module_author 		= 'Bianka Martinovic';

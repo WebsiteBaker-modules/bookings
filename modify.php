@@ -30,9 +30,9 @@ if ( true === $debug ) {
 }
 
 // include core functions of WB 2.7 to edit the optional module CSS files (frontend.css, backend.css)
-@include_once(WB_PATH .'/framework/module.functions.php');
+@include WB_PATH .'/framework/module.functions.php';
 
-@include_once('functions.php');
+include dirname(__FILE__).'/functions.php';
 
 /**
 *	MODULE LANGUAGE SUPPORT IS INTRODUCED WITH THE LINES BELOW
@@ -42,21 +42,10 @@ if ( true === $debug ) {
 // check if module language file exists for the language set by the user (e.g. DE, EN)
 if(!file_exists(WB_PATH .'/modules/bookings_v2/languages/' .LANGUAGE .'.php')) {
   	// no module language file exists for the language set by the user, include default module language file EN.php
-  	require_once(WB_PATH .'/modules/bookings_v2/languages/EN.php');
+  	require WB_PATH .'/modules/bookings_v2/languages/EN.php';
 } else {
 	// a module language file exists for the language defined by the user, load it
-		require_once(WB_PATH .'/modules/bookings_v2/languages/' .LANGUAGE .'.php');
-}
-
-/**
-*	INLCUDE BACKEND.CSS INTO THE HTML BODY OF THE PAGE IF WB < 2.6.6
-*	NOTE: THIS WAY MODULES BECOME DOWNWARD COMPATIBLE WITH OLDER WB RELEASES
-*/
-// check if backend.css file needs to be included into the <body></body> of modify.php
-if(!method_exists($admin, 'register_backend_modfiles') && file_exists(WB_PATH .'/modules/bookings_v2/backend.css')) {
-  	echo '<style type="text/css">';
-  	include(WB_PATH .'/modules/bookings_v2/backend.css');
-  	echo "\n</style>\n";
+	require_once WB_PATH .'/modules/bookings_v2/languages/' .LANGUAGE .'.php';
 }
 
 Bookings_Header();

@@ -86,7 +86,7 @@ function CalCheckDate() {
                 
                 var begin_date = new Date(
                                      document.forms["modify"].beginyear.value,
-                                     parseInt(document.forms["modify"].beginmonth.value),
+                                     parseInt(document.forms["modify"].beginmonth.value)-1,
                                      parseInt(document.forms["modify"].beginday.value),
                                      parseInt(document.forms["modify"].beginhour.value),
                                      parseInt(document.forms["modify"].beginminute.value),
@@ -95,7 +95,7 @@ function CalCheckDate() {
                                  
                 var end_date   = new Date(
                                      document.forms["modify"].endyear.value,
-                                     parseInt(document.forms["modify"].endmonth.value),
+                                     parseInt(document.forms["modify"].endmonth.value)-1,
                                      parseInt(document.forms["modify"].endday.value),
                                      parseInt(document.forms["modify"].endhour.value),
                                      parseInt(document.forms["modify"].endminute.value),
@@ -107,7 +107,7 @@ function CalCheckDate() {
                 if ( begin_date.getTime() > end_date.getTime() )
                 {
                     document.forms["modify"].endyear.value  = begin_date.getFullYear();
-                    document.forms["modify"].endmonth.value = begin_date.getMonth();
+                    document.forms["modify"].endmonth.value = begin_date.getMonth()+1;
                     document.forms["modify"].endday.value   = begin_date.getDate();
                 }
 

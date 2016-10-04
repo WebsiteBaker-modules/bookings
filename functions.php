@@ -229,7 +229,7 @@ function Bookings_Day_List_Range( $day, $year, $month, $range, $section_id, $set
 
     if ( ! $count ) {
 		$r .= "<tr><td colspan=\"3\">"
-		    . "No bookings found"
+		    . $MOD_BOOKINGS['NO_BOOKINGS']
 		    . "</td></tr>\n";
 	}
 
@@ -377,8 +377,15 @@ function Bookings_Week_Sheet( $year, $week, $section_id, $set )
 #### FIXME
         #$lastyear = date("Y", mktime(0,0,0,12,30,($year-1)));
     }
-    if ( $week >= 52 ) {
+
+    # fix by "jacobi22"; thank you!
+    # http://forum.websitebaker.org/index.php/topic,28801.msg201767.html#msg201767
+    if ( $week == 52 ) {
         $nextweek = intval(date("W",mktime(0,0,0,1,1,($year+1))));
+        $nextyear = date("Y", mktime(0,0,0,1,1,($year)));
+    }
+    if ( $week == 53 ) {
+        $nextweek = intval(date("W",mktime(0,0,0,1,1,($year))));
         $nextyear = date("Y", mktime(0,0,0,1,1,($year+1)));
     }
 
@@ -958,7 +965,7 @@ function Bookings_Show_List ( $section = '' ) {
 #        else {
             $action = $_SERVER['SCRIPT_NAME'];
 #        }
-        $ftan = ( ( WB_VERSION >= "2.8.2" ) ? $admin->getFTAN() : NULL );
+        $ftan = ( version_compare( WB_VERSION, "2.8.2", '>=' ) ? $admin->getFTAN() : NULL );
 
         echo "<table style=\"width: 100%;\">\n<tr>\n<td>\n",
              "<form method=\"post\" action=\"$action?page_id=".$page_id."\">\n",
@@ -1126,7 +1133,7 @@ function Bookings_Show_List ( $section = '' ) {
     if ( ! isset($file) || ! $file || $file != 'modify.php' ) {
         // back button
         echo "<form method=\"post\" action=\"".$_SERVER['SCRIPT_NAME']."\">\n",
-             ( ( WB_VERSION >= "2.8.2" ) ? $admin->getFTAN() : '' ),
+             ( version_compare( WB_VERSION, "2.8.2", '>=' ) ? $admin->getFTAN() : '' ),
              "<input type=\"submit\" value=\"&laquo; ".$TEXT['BACK']."\" />\n</form>";
     }
 
@@ -1141,6 +1148,7 @@ function Bookings_Form( $what, $date, $year, $show_hide_selected, $section )
 
     $CurrYear                          = date("Y");
     $month_selected[$date['month']]    = 'selected="selected"';
+    $year_selected[$date['year']]      = 'selected="selected"';
     $day_selected[$date['day']]        = 'selected="selected"';
 
     $output = "
@@ -1384,7 +1392,7 @@ function Bookings_edit_Entry ( $bookings_id = '', $section = '' ) {
 ?>
 
 <form name="modify" action="<?php echo $action; ?>" method="post" style="margin: 0;">
-<?php ( ( WB_VERSION >= "2.8.2" ) ? $admin->getFTAN() : '' ); ?>
+<?php ( version_compare( WB_VERSION, "2.8.2", '>=' ) ? $admin->getFTAN() : '' ); ?>
 <input type="hidden" id="section_id" name="section_id" value="<?php echo $section; ?>" />
 <input type="hidden" name="page_id" value="<?php echo $page_id; ?>" />
 <input type="hidden" name="bookings_id" value="<?php echo $bookings_id; ?>" />
@@ -1495,6 +1503,7 @@ function Bookings_edit_Entry ( $bookings_id = '', $section = '' ) {
         </td>
         <td class="mod_bookings_right" colspan="2">
             <select id="group" name="group">
+            <option value="0"><?php echo $TEXT['NONE']; ?></option>;
 <?php
     $groups = _GetBookingsGroups( $section );
     foreach ( $groups as $group ) {
@@ -1666,7 +1675,7 @@ function Bookings_save_Entry ( $bookings_id = '', $section = '' ) {
         $sql = "INSERT INTO ".TABLE_PREFIX."mod_bookings_dates
     VALUES ( '$page_id',
              '$section',
-             '',
+             NULL,
              '$begindate',
              '$enddate',
              '$name',
@@ -1816,6 +1825,16 @@ function Bookings_edit_Groups( $section = '' ) {
 
     }
 
+    $modified_id = $groupToEdit = $isModified = NULL;
+    if ( isset( $_REQUEST['modified'] ) && is_numeric( $_REQUEST['modified'] ) ) {
+        $modified_id = $_REQUEST['modified'];
+    }
+
+    if ( isset( $_REQUEST['editgroup'] ) && is_numeric( $_REQUEST['editgroup'] ) ) {
+    	$groupToEdit = $_REQUEST['editgroup'];
+    	$isModified = '&amp;modified='.$_REQUEST['editgroup'];
+    }
+
     // new group to add?
     if ( ! empty ( $_POST['addgroup'] ) ) {
 
@@ -1858,7 +1877,7 @@ function Bookings_edit_Groups( $section = '' ) {
 
         // check if group already exists
         foreach ( $groups as $group ) {
-            if ( $group['name'] === $_POST['addgroup'] ) {
+            if ( $group['name'] === $_POST['addgroup'] && $modified_id == NULL ) {
                 $exist_item = $group['group_id'];
                 echo "<div class=\"mod_bookings_fail\">",
                      $MOD_BOOKINGS['ERR_EXISTS'],
@@ -1866,11 +1885,16 @@ function Bookings_edit_Groups( $section = '' ) {
             }
         }
 
-        if ( empty ( $exit_item ) ) {
-
-            $sql = "INSERT INTO ".TABLE_PREFIX."mod_bookings_groups VALUES( "
-                 . "'', '$page_id', '$section', '$group_name', '$color'"
-                 . ")";
+        if ( empty ( $exist_item ) ) {
+            if ( $modified_id !== NULL ) {
+     			$sql = "UPDATE ".TABLE_PREFIX."mod_bookings_groups SET "
+	                 . "name = '$group_name', color = '$color' "
+	                 . "WHERE group_id = ".$modified_id;
+      		} else {
+                $sql = "INSERT INTO ".TABLE_PREFIX."mod_bookings_groups VALUES( "
+                     . "NULL, '$page_id', '$section', '$group_name', '$color'"
+                     . ")";
+            }
 
             $database->query( $sql );
             if($database->is_error()) {
@@ -1896,8 +1920,8 @@ function Bookings_edit_Groups( $section = '' ) {
 <div id="mod_bookings">
   <script charset=windows-1250 src="<?php echo WB_URL; ?>/modules/bookings_v2/js/301a.js" type="text/javascript"></script>
 
-  <form name="edit" action="<?php echo $action; ?>?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section; ?>&amp;editgroups=1" method="post" style="margin: 0;">
-<?php ( ( WB_VERSION >= "2.8.2" ) ? $admin->getFTAN() : '' ); ?>
+  <form name="edit" action="<?php echo $action; ?>?page_id=<?php echo $page_id; ?>&amp;section_id=<?php echo $section; ?>&amp;editgroups=1<?php echo $isModified; ?>" method="post" style="margin: 0;">
+<?php ( version_compare( WB_VERSION, "2.8.2", '>=' ) ? $admin->getFTAN() : '' ); ?>
   <input type="hidden" name="page_id" value="<?php echo $page_id; ?>" />
   <input type="hidden" name="section_id" value="<?php echo $section; ?>" />
   <input type="hidden" name="editgroups" value="1" />
@@ -1912,6 +1936,10 @@ function Bookings_edit_Groups( $section = '' ) {
     <th>&nbsp;</th>
   </tr>
 <?php
+
+    $oldName = '';
+	$oldColor = '';
+	$btnSaveText = $TEXT['SAVE'];
 
     foreach ( $groups as $group ) {
 
@@ -1934,16 +1962,26 @@ function Bookings_edit_Groups( $section = '' ) {
                     . $TEXT['DELETE']
                     . "\" /></a>\n";
         }
+        $modify  = '<a href="'.$_SERVER['SCRIPT_NAME'].'?page_id='.$page_id.'&section_id='.$section.'&editgroups=1&editgroup='.$group['group_id'].'"'
+                 . "title=\"".$TEXT['MODIFY']."\">\n"
+                 . "  <img src=\"".THEME_URL."/images/modify_16.png\" border=\"0\" alt=\""
+                 . $TEXT['MODIFY']
+                 . "\" /></a>\n";
         $bgcolor = ( isset($group['color']) && $group['color'] != '' )
                  ? $group['color']
                  : '#ffffff';
+        if ($group['group_id'] === $groupToEdit) {
+        	$oldName = $group['name'];
+            $oldColor = $bgcolor;
+			$btnSaveText = $TEXT['MODIFY'];
+        }
 
 ?>
   <tr <?php if ( $exist_item == $group['group_id'] ) { echo "class=\"mod_bookings_fail\""; } ?>>
     <td><?php echo $group['name']; ?></td>
     <td><span style="width: 15px; display: inline-block; background-color: <?php echo $bgcolor; ?>;">&nbsp;</span> <?php echo $bgcolor; ?></td>
     <td><?php echo $count[0]; ?></td>
-    <td><?php echo $delete; ?></td>
+    <td><?php echo $modify.$delete; ?></td>
   </tr>
 <?php
     }
@@ -1953,7 +1991,7 @@ function Bookings_edit_Groups( $section = '' ) {
     <th colspan="3"><?php echo $TEXT['ADD']; ?></th>
   </tr>
   <tr>
-    <td>Name: <input type="text" name="addgroup" /></td>
+    <td>Name: <input type="text" name="addgroup" value="<?php echo $oldName; ?>" /></td>
     <td>Farbe:
        <input type="text" class="colorsample"
               style="background-color: #ffffff;"
@@ -1962,11 +2000,11 @@ function Bookings_edit_Groups( $section = '' ) {
        />
        <input type="text" size="9" class="small" id="color"
               name="color"
-              value=""
+              value="<?php echo $oldColor; ?>"
               maxlength="7"
               onclick="showColorGrid3('color','colorsample');"
        />
-    <td><input type="submit" value="<?php echo $TEXT['SAVE']; ?>" />
+    <td><input type="submit" value="<?php echo $btnSaveText; ?>" />
         <input type="submit" name="cancel" id="cancel" value="<?php echo $TEXT['BACK']; ?>" /></td>
   </tr>
   </table>
@@ -2053,7 +2091,7 @@ function Bookings_edit_Settings ( $section = '' ) {
   <input type="hidden" name="section_id" value="<?php echo $section; ?>" />
 
 <?php
-    ( ( WB_VERSION >= "2.8.2" ) ? $admin->getFTAN() : '' );
+    ( version_compare( WB_VERSION, "2.8.2", '>=' ) ? $admin->getFTAN() : '' );
     include_once( 'info.php' );
     echo "<h2>Bookings V$module_version</h2>\n";
 
@@ -2833,6 +2871,7 @@ function _GetBookings ( $year, $thismonth, $section_id, $single )
     $booked = array();
     $part   = array();
     $states = array();
+    $groups = array();
 
     if ( $single )
     {
@@ -2873,96 +2912,113 @@ function _GetBookings ( $year, $thismonth, $section_id, $single )
         $sql
     );
 
-    while( $row = $result->fetchRow() ) {
+    if ( $result->numRows() > 0 )
+    {
 
-        $firstmonth = true;
-        $lastmonth = true;
-        $begindate = date_parse( $row['begindate'] );
-        $enddate   = date_parse( $row['enddate'] );
-
-        $beginday  = $begindate['day'];
-        $endday    = $enddate['day'];
-
-        if ( $begindate['month'] <> $thismonth ) {
-            $begindate['month'] = $thismonth;
-            $beginday           = 1;
-            $firstmonth = false;
-        }
-
-        if ( $enddate['month'] <> $thismonth ) {
-            $enddate['month'] = $thismonth;
-            $endday           = strftime( "%d", mktime(0,0,0,$thismonth+1,0,$year));
-            $lastmonth = false;
-        }
-
-        if ( ! isset( $row['state'] ) )
+        $group_temp
+            = _GetBookingsGroups( $section_id );
+        $groupnames = array();
+        foreach( $group_temp as $gr )
         {
-            $row['state'] = 'booked';
+            $groupnames[$gr['group_id']] = $gr['name'];
         }
 
-        for ( $i = $beginday; $i <= $endday; $i++ ) {
+        while( $row = $result->fetchRow() ) {
 
-            $temp = array();
+            $firstmonth = true;
+            $lastmonth  = true;
+            $begindate  = date_parse( $row['begindate'] );
+            $enddate    = date_parse( $row['enddate'] );
+            $beginday   = $begindate['day'];
+            $endday     = $enddate['day'];
 
-            $temp['name'] = $MOD_BOOKINGS['STATE_'.strtoupper($row['state'])];
-
-            if ( $i == $begindate['day'] && $firstmonth) {
-                if (  $begindate['hour']   <> 0
-                   || $begindate['minute'] <> 0 )
-                {
-                    $part[$i] = 1;
-                    $temp['begin'] = sprintf( '%02d:%02d', $begindate['hour'], $begindate['minute'] );
-                }
+            if ( $begindate['month'] <> $thismonth ) {
+                $begindate['month'] = $thismonth;
+                $beginday           = 1;
+                $firstmonth         = false;
             }
 
-            if ( $i == $enddate['day'] && $lastmonth) {
-                if ( $enddate['hour']   <> 0
-                  || $enddate['minute'] <> 0 )
-                {
-                    if ( $enddate['hour'] != 23 && $enddate['minute'] != 59 )
+            if ( $enddate['month'] <> $thismonth ) {
+                $enddate['month'] = $thismonth;
+                $endday           = strftime( "%d", mktime(0,0,0,$thismonth+1,0,$year));
+                $lastmonth        = false;
+            }
+
+            if ( ! isset( $row['state'] ) )
+            {
+                $row['state'] = 'booked';
+            }
+
+            for ( $i = $beginday; $i <= $endday; $i++ ) {
+
+                $temp = array();
+
+                $temp['name'] = $MOD_BOOKINGS['STATE_'.strtoupper($row['state'])];
+
+                if ( $i == $begindate['day'] && $firstmonth) {
+                    if (  $begindate['hour']   <> 0
+                       || $begindate['minute'] <> 0 )
                     {
                         $part[$i] = 1;
-                        $temp['end'] = sprintf( '%02d:%02d', $enddate['hour'], $enddate['minute'] );
+                        $temp['begin'] = sprintf( '%02d:%02d', $begindate['hour'], $begindate['minute'] );
                     }
                 }
-            }
 
-            if ( $row['hidename'] == 'n' )
-            {
-                $temp['name'] = $row['name'];
-            }
-
-            $detail = '';
-            if ( ! empty( $temp['begin'] ) && empty( $temp['end'] ) ) {
-                $detail .= $MOD_BOOKINGS['FROM'] . ' ' . $temp['begin'];
-            }
-            elseif ( ! empty( $temp['end'] ) && empty ( $temp['begin'] ) ) {
-                $detail .= $MOD_BOOKINGS['UNTIL'] . ' ' . $temp['end'];
-            }
-            elseif ( ! empty( $temp['end'] ) && $temp['begin'] ) {
-                if ( isset($DEFAULTS['show_until']) && $DEFAULTS['show_until'] ) {
-                    $detail .= join( ' - ', array( $temp['begin'], $temp['end'] ) );
+                if ( $i == $enddate['day'] && $lastmonth) {
+                    if ( $enddate['hour']   <> 0
+                      || $enddate['minute'] <> 0 )
+                    {
+                        if ( $enddate['hour'] != 23 && $enddate['minute'] != 59 )
+                        {
+                            $part[$i] = 1;
+                            $temp['end'] = sprintf( '%02d:%02d', $enddate['hour'], $enddate['minute'] );
+                        }
+                    }
                 }
-                else {
-                    $detail .= $temp['begin'];
-                }
-            }
 
-            if ( ! empty( $temp['name'] ) ) {
-                $detail .= ' ' . $temp['name'];
-            }
-
-            if ( ! empty ( $detail ) ) {
-                if ( ! empty ( $details[$i] ) ) {
-                    $details[$i] .= "<br />$detail\n";
+                if ( $row['hidename'] == 'n' )
+                {
+                    $temp['name'] = $row['name'];
                 }
-                else {
-                    $details[$i] = "$detail\n";
-                }
-            }
 
-            $booked[$i] = 1;
-            $states[$i] = $row['state'];
+                $detail = '';
+                if ( ! empty( $temp['begin'] ) && empty( $temp['end'] ) ) {
+                    $detail .= $MOD_BOOKINGS['FROM'] . ' ' . $temp['begin'];
+                }
+                elseif ( ! empty( $temp['end'] ) && empty ( $temp['begin'] ) ) {
+                    $detail .= $MOD_BOOKINGS['UNTIL'] . ' ' . $temp['end'];
+                }
+                elseif ( ! empty( $temp['end'] ) && $temp['begin'] ) {
+                    if ( isset($DEFAULTS['show_until']) && $DEFAULTS['show_until'] ) {
+                        $detail .= join( ' - ', array( $temp['begin'], $temp['end'] ) );
+                    }
+                    else {
+                        $detail .= $temp['begin'];
+                    }
+                }
+
+                if ( ! empty( $temp['name'] ) ) {
+                    $detail .= ' ' . $temp['name'];
+                }
+
+                if ( $row['group_id'] > 0  && $row['hidename'] == 'n' )
+                {
+					$detail .= ( isset($groupnames[$row['group_id']]) ? '('.$groupnames[$row['group_id']].')' : NULL );
+                }
+
+                if ( ! empty ( $detail ) ) {
+                    if ( ! empty ( $details[$i] ) ) {
+                        $details[$i] .= "<br />$detail\n";
+                    }
+                    else {
+                        $details[$i] = "$detail\n";
+                    }
+                }
+
+                $booked[$i] = 1;
+                $states[$i] = $row['state'];
+
+            }
 
         }
 

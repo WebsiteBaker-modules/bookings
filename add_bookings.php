@@ -36,12 +36,6 @@ if(LANGUAGE_LOADED) {
   	}
 }
 
-if(!method_exists($admin, 'register_backend_modfiles') && file_exists(WB_PATH .'/modules/bookings_v2/backend.css')) {
-  	echo '<style type="text/css">';
-  	include(WB_PATH .'/modules/bookings_v2/backend.css');
-  	echo "\n</style>\n";
-}
-
 Bookings_Header();
 
 if ( isset( $_REQUEST['save'] ) ) {

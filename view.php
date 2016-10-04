@@ -50,13 +50,11 @@ include_once('functions.php');
 
 global $MOD_BOOKINGS;
 
-// check if module language file exists for the language set by the user (e.g. DE, EN)
 if(!file_exists(WB_PATH .'/modules/bookings_v2/languages/' .LANGUAGE .'.php')) {
-  	// no module language file exists for the language set by the user, include default module language file EN.php
-	  require_once(WB_PATH .'/modules/bookings_v2/languages/EN.php');
+    require WB_PATH .'/modules/bookings_v2/languages/EN.php';
 } else {
-	  // a module language file exists for the language defined by the user, load it
-		require_once(WB_PATH .'/modules/bookings_v2/languages/' .LANGUAGE .'.php');
+    // a module language file exists for the language defined by the user, load it
+	require WB_PATH .'/modules/bookings_v2/languages/' .LANGUAGE .'.php';
 }
 
 // check for numeric section_id
